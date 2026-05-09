@@ -14,45 +14,24 @@
 
   <script type="text/babel">
     const root = document.getElementById('root');
-    function Title(){
-      return (<h3 id="title" onMouseEnter={() => console.log("Mouse entered h3")}>Hello I am H3</h3>);
-    } 
-    // const h3 = React.createElement(
-    //   'h3', 
-    //   {
-    //     id:"title",
-    //     onMouseEnter: () => console.log("Mouse entered h3")
-    //   },
-    //   'Hello I am H3'
-    // ); 
+    let counter = 0;
+    function countUp(){
+      counter = counter + 1 ;
+      render(); //바뀐 부분만 업데이트
+    }
 
-    const Button = ()=> <button style={{ backgroundColor: "blue" }} onClick={() => console.log("im Clicked")}>Click me</button>
-      
-    // const btn = React.createElement("button",
-    //   {onClick: () => console.log("im Clicked"),
-    //   style:{
-    //     backgroundColor: "blue"
-    //   }
-    //   }, 
-    //   "Click me"
-    // )
+    function  render(){
+      ReactDOM.render(<Container />, root);
+    }
 
-    
+    function Container() {
+      return (
+      <div>
+        <h3 >Total click : {counter}</h3>
+        <button onClick= {countUp}>Click me</button>
+      </div>);}
 
-// Button -> 대문자를 적우
-    const Container = <div>
-      <Title />
-      <Button /> 
-    </div>
-
-    //  const container = <Container />
-    // // const container = React.createElement(
-    // //   'div', 
-    // //   null, 
-    // //   [Title, Button]
-    // // );
-
-    ReactDOM.render(Container, root); 
+  render();
   </script>
 
 </html>
